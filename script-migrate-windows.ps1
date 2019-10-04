@@ -28,6 +28,12 @@ Initialize-Disk -Number 2 -PartitionStyle MBR -PassThru
 New-Partition -DiskNumber 2 -DriveLetter F -UseMaximumSize 
 Format-Volume -DriveLetter F -FileSystem NTFS -NewFileSystemLabel "DataDisk02" -Confirm:$false
 
+# Download website02 code from Github
+Invoke-WebRequest https://raw.githubusercontent.com/ahmadzahoory/az300template/master/az-300-website-migration-02.zip -OutFile f:\website02\az-300-website-migration-02.zip
+
+# Unzip .zip file
+Expand-Archive f:\website02\az-300-website-migration-02.zip -DestinationPath f:\website02
+
 # Create an 2nd IIS site and it associated Application Pool. 
 $SiteFolderPath = "f:\website02"         # Website Folder
 $SiteAppPool = "webserver02"             # Application Pool Name
@@ -37,12 +43,6 @@ New-Item $SiteFolderPath -type Directory
 New-Item IIS:\AppPools\$SiteAppPool
 New-Item IIS:\Sites\$SiteName -physicalPath $SiteFolderPath -bindings @{protocol="http";bindingInformation=":8080:"}
 Set-ItemProperty IIS:\Sites\$SiteName -name applicationPool -value $SiteAppPool
-
-# Download website02 code from Github
-Invoke-WebRequest https://raw.githubusercontent.com/ahmadzahoory/az300template/master/az-300-website-migration-02.zip -OutFile f:\website02\az-300-website-migration-02.zip
-
-# Unzip .zip file
-Expand-Archive f:\website02\az-300-website-migration-02.zip -DestinationPath f:\website02
 
 # Open ICMP port
 New-NetFirewallRule -DisplayName "Allow Inbound Port 8080" -Direction inbound -LocalPort 8080 -Protocol TCP -Action Allow
