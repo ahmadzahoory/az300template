@@ -38,19 +38,11 @@ New-Item IIS:\AppPools\$SiteAppPool
 New-Item IIS:\Sites\$SiteName -physicalPath $SiteFolderPath -bindings @{protocol="http";bindingInformation=":8080:"}
 Set-ItemProperty IIS:\Sites\$SiteName -name applicationPool -value $SiteAppPool
 
-# Change drive & create directory
-cd f:\
-
-# Download website dashboard code from Github
-$url = "https://raw.githubusercontent.com/ahmadzahoory/az300template/master/az-300-website-migration-02.zip"
-$output = "$PSScriptRoot\az-300-website-migration-02.zip"
-$start_time = Get-Date
-
-Invoke-WebRequest -Uri $url -OutFile $output
-Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
+# Download website02 code from Github
+Invoke-WebRequest https://raw.githubusercontent.com/ahmadzahoory/az300template/master/az-300-website-migration-02.zip -OutFile f:\website02\az-300-website-migration-02.zip
 
 # Unzip .zip file
-Expand-Archive f:\az-300-website-migration-02.zip -DestinationPath f:\website02
+Expand-Archive f:\website02\az-300-website-migration-02.zip -DestinationPath f:\website02
 
 # Open ICMP port
 New-NetFirewallRule -DisplayName "Allow Inbound Port 8080" -Direction inbound -LocalPort 8080 -Protocol TCP -Action Allow
