@@ -39,7 +39,7 @@ New-Item IIS:\Sites\$SiteName -physicalPath $SiteFolderPath -bindings @{protocol
 Set-ItemProperty IIS:\Sites\$SiteName -name applicationPool -value $SiteAppPool
 
 # Change drive & create directory
-cd f:
+cd f:\
 
 # Download website dashboard code from Github
 $url = "https://raw.githubusercontent.com/ahmadzahoory/az300template/master/az-300-website-migration-02.zip"
