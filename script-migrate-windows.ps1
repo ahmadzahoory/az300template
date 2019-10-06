@@ -46,3 +46,6 @@ Expand-Archive f:\website02\az-300-website-migration-02.zip -DestinationPath f:\
 
 # Open ICMP port
 New-NetFirewallRule -DisplayName "Allow Inbound Port 8080" -Direction inbound -LocalPort 8080 -Protocol TCP -Action Allow
+
+#Open ICMPv4 Firewall Rule
+New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
