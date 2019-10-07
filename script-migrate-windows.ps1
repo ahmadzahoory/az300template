@@ -19,6 +19,7 @@ $destination.copyHere($zipfile.items())
 
 # Create the web app in IIS
 New-WebApplication -Name netapp -PhysicalPath c:\inetpub\wwwroot\vm-website -Site "Default Web Site" -force
+
 # Initialize the disk
 Get-Disk | Where partitionstyle -eq 'raw' | Initialize-Disk -PartitionStyle MBR -PassThru | New-Partition -AssignDriveLetter -UseMaximumSize | Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisk01" -Confirm:$false
 
