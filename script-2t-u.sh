@@ -10,5 +10,5 @@ systemctl restart apache2.service
 /etc/init.d/shellinabox start
 cd /var/www/html/
 rm index.html
-wget https://raw.githubusercontent.com/ahmadzahoory/az300template/master/az-2-tier-code-ubuntu.zip
+wget https://raw.githubusercontent.com/ahmadzahoory/az300template/master/website-code-2t-u.zip
 unzip az-2-tier-code-ubuntu.zip
