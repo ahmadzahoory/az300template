@@ -14,7 +14,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName NetFx4Extended-ASPNET45
 Set-Location -Path C:\inetpub\wwwroot
 
 $shell_app = new-object -com shell.application
-(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/ahmadzahoory/azuretemplate/master/vm-private-ip.zip", (Get-Location).Path + "\vm-private-ip.zip")
+(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/ahmadzahoory/az300template/master/vm-private-ip.zip", (Get-Location).Path + "\vm-private-ip.zip")
 
 $zipfile = $shell_app.Namespace((Get-Location).Path + "\vm-private-ip.zip")
 $destination = $shell_app.Namespace((Get-Location).Path)
