@@ -11,4 +11,4 @@ systemctl restart apache2.service
 cd /var/www/html/
 rm index.html
 wget https://raw.githubusercontent.com/ahmadzahoory/az300template/master/website-code-2t-u.zip
-unzip az-2-tier-code-ubuntu.zip
+unzip website-code-2t-u.zip
