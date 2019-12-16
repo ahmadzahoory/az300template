@@ -11,9 +11,9 @@ install-windowsfeature web-mgmt-tools
 Set-Location -Path C:\inetpub\wwwroot
 
 $shell_app = new-object -com shell.application
-(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/ahmadzahoory/az300template/master/Az-300-03-02-A-Code.zip", (Get-Location).Path + "\Az-300-03-02-A-Code.zip")
+(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/ahmadzahoory/az300template/master/az-300-03-02-a-code.zip", (Get-Location).Path + "\az-300-03-02-a-code.zip")
 
-$zipfile = $shell_app.Namespace((Get-Location).Path + "\Az-300-03-02-A-Code.zip")
+$zipfile = $shell_app.Namespace((Get-Location).Path + "\az-300-03-02-a-code.zip")
 $destination = $shell_app.Namespace((Get-Location).Path)
 $destination.copyHere($zipfile.items())
 
